@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:title="Doctor"
+        android:id="@+id/itemDoctorList"
+        android:icon="@drawable/baseline_medical_services_24"
+        app:showAsAction="always"
+
+    />
+
+    <item
+        android:title="Article"
+        android:id="@+id/itemArticleList"
+        android:icon="@drawable/baseline_newspaper_24"
+        app:showAsAction="always"
+
+    />
+
+    <item
+        android:title="Medicine"
+        android:id="@+id/itemMedicineList"
+        android:icon="@drawable/baseline_medication_24"
+        app:showAsAction="always"
+    />
+    <item
+        android:title="Transaction"
+        android:id="@+id/itemTransactionList"
+        android:icon="@drawable/baseline_history_24"
+        app:showAsAction="always"
+    />
+    <item
+        android:title="Profile"
+        android:id="@+id/itemProfile"
+        android:icon="@drawable/baseline_person_24"
+        app:showAsAction="always"
+    />
+</menu>

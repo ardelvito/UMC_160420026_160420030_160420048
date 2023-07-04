@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/itemDoctorList"
+        android:name="com.example.healthcaretesting.view.DoctorListFragment"
+        android:label="fragment_doctor_list"
+        tools:layout="@layout/fragment_doctor_list" />
+    <fragment
+        android:id="@+id/itemMedicineList"
+        android:name="com.example.healthcaretesting.view.MedicineListFragment"
+        android:label="fragment_medicine_list"
+        tools:layout="@layout/fragment_medicine_list" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.example.healthcaretesting.view.MyProfileFragment"
+        android:label="fragment_my_profile"
+        tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/itemTransactionList"
+        android:name="com.example.healthcaretesting.view.TransactionListFragment"
+        android:label="fragment_transaction_list"
+        tools:layout="@layout/fragment_transaction_list" />
+    <fragment
+        android:id="@+id/itemArticleList"
+        android:name="com.example.healthcaretesting.view.ArticleListFragment"
+        android:label="fragment_article_list"
+        tools:layout="@layout/fragment_article_list" >
+        <action
+            android:id="@+id/actionArticleDetail"
+            app:destination="@id/articleDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleDetailFragment"
+        android:name="com.example.healthcaretesting.view.ArticleDetailFragment"
+        android:label="ArticleDetailFragment"
+        tools:layout="@layout/fragment_article_detail" >
+        <argument
+            android:name="articleId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.healthcaretesting.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/actionRegist"
+            app:destination="@id/registFragment" />
+        <action
+            android:id="@+id/actionLogin"
+            app:destination="@id/itemDoctorList" />
+    </fragment>
+    <fragment
+        android:id="@+id/registFragment"
+        android:name="com.example.healthcaretesting.view.RegistFragment"
+        android:label="fragment_regist"
+        tools:layout="@layout/fragment_regist" >
+        <action
+            android:id="@+id/actionBackToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>
