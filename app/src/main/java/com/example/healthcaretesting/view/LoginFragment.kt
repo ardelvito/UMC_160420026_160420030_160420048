@@ -1,5 +1,7 @@
 package com.example.healthcaretesting.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,7 +20,8 @@ import com.example.healthcaretesting.viewmodel.LoginViewModel
 class LoginFragment : Fragment() {
 
     private lateinit var viewModel:LoginViewModel
-
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var userIdPreferences: SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,10 +33,26 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //SharedPrefs Session & UserID
+        sharedPreferences = requireContext().getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+        userIdPreferences = requireContext().getSharedPreferences("UserId", Context.MODE_PRIVATE)
+
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         //Hide bottom nav, drawer and toolbar
         (activity as MainActivity).setComponentsVisibility(false)
+
+        //Session Checker
+        if (checkSession(sharedPreferences)) {
+            // User is already logged in, continue displaying the ArticleListFragment
+            Log.d("Status Login", "Anda Sudah Login")
+            Toast.makeText(this.context, "Anda Sudah Login!", Toast.LENGTH_LONG).show()
+
+        } else {
+            // User is not logged in, navigate to the LoginFragment
+            Log.d("Status Login", "Anda Belum Login")
+            Toast.makeText(this.context, "Silahkan Login Dahulu", Toast.LENGTH_LONG).show()
+        }
 
         val btnLogin = view.findViewById<Button>(R.id.btnLogin)
         btnLogin.setOnClickListener{
@@ -44,12 +63,35 @@ class LoginFragment : Fragment() {
             Log.d("Password Login", txtPassword.text.toString())
 
             viewModel.userLoginAttempt(txtUsername.text.toString(), txtPassword.text.toString())
+            viewModel.getUserId(txtUsername.text.toString())
 
-            Toast.makeText(view.context, "Success Login", Toast.LENGTH_SHORT).show()
+
+            if (isLoggedIn()) {
+                // Login successful
+                Toast.makeText(view.context, "Success Login", Toast.LENGTH_SHORT).show()
+
+                //Direct into home (article list)
+                val action = LoginFragmentDirections.actionHome()
+                Navigation.findNavController(it).navigate(action)
+
+            } else {
+                // Login failed
+                Toast.makeText(view.context, "Failed Login", Toast.LENGTH_SHORT).show()
+
+            }
 
 
         }
 
+    }
+
+    private fun checkSession(sharedPreferences: SharedPreferences?): Boolean {
+
+        return sharedPreferences?.getBoolean("isLoggedIn", false)!!
+    }
+
+    private fun isLoggedIn(): Boolean {
+        return sharedPreferences.getBoolean("isLoggedIn", false)
     }
 
 }

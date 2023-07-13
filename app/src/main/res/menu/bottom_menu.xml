@@ -4,13 +4,7 @@
 
 
 
-    <item
-        android:title="Doctor"
-        android:id="@+id/itemDoctorList"
-        android:icon="@drawable/baseline_medical_services_24"
-        app:showAsAction="always"
 
-    />
 
     <item
         android:title="Article"
@@ -19,6 +13,14 @@
         app:showAsAction="always"
 
     />
+
+    <item
+        android:title="Doctor"
+        android:id="@+id/itemDoctorList"
+        android:icon="@drawable/baseline_medical_services_24"
+        app:showAsAction="always"
+
+        />
 
     <item
         android:title="Medicine"

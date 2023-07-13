@@ -45,6 +45,9 @@ interface UserDao{
     @Query("SELECT * FROM users WHERE uuid= :id")
     fun selectUser(id:Int): User
 
+    @Query("SELECT uuid FROM users WHERE username = :username")
+    fun selectUserId(username: String): Int?
+
     @Query("UPDATE users SET fullname=:fullname, username=:username, phone=:phone, password=:password WHERE uuid = :id")
     fun updateUser(fullname:String, username: String, phone:String, password: String, id:Int)
 

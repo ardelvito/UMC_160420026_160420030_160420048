@@ -149,10 +149,10 @@ class MainActivity : AppCompatActivity() {
         )
 
         // Prepopulate articles
-        articleDao.insertAll(articles)
+//        articleDao.insertAll(articles)
 
         //Prepopulate users
-        userDao.userRegisterAll(users)
+//        userDao.userRegisterAll(users)
 
     }
 
