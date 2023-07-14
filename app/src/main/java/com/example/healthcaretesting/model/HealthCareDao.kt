@@ -53,3 +53,56 @@ interface UserDao{
 
 }
 
+@Dao
+interface DoctorDao{
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(doctor: List<Doctor>)
+
+    @Query("SELECT * FROM doctors")
+    fun  selectAllDoctors(): List<Doctor>
+
+    @Query("SELECT * FROM doctors WHERE uuid= :id")
+    fun selectDoctor(id:Int): Doctor
+
+    @Delete
+    fun deleteDoctor(doctor: Doctor)
+
+}
+
+@Dao
+interface BookingDao{
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(booking: List<Booking>)
+
+    @Insert
+    fun insert(booking: Booking)
+
+    @Query("SELECT * FROM bookings")
+    fun  selectAllBooking(): List<Booking>
+
+    @Query("SELECT * FROM bookings WHERE doctor_id= :doctor_id")
+    fun  selectBookingByDoctor(doctor_id: Int): List<Booking>
+
+    @Query("SELECT * FROM bookings WHERE user_id= :user_id")
+    fun  selectBookingByUser(user_id: Int): List<Booking>
+    @Delete
+    fun deleteBooking(booking: Booking)
+
+}
+
+@Dao
+interface FacilityDao{
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(facility: List<Facility>)
+
+    @Query("SELECT * FROM facilities")
+    fun  selectAllFacility(): List<Facility>
+
+    @Query("SELECT * FROM facilities WHERE uuid= :id")
+    fun  selectFacility(id: Int): Facility
+
+    @Delete
+    fun deleteBooking(facility: Facility)
+
+}
+
