@@ -34,7 +34,7 @@ interface UserDao{
     fun userLogin(username:String, password:String):User
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun userRegister(vararg user: User)
+    fun userRegister(user: User): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun userRegisterAll(articles: List<User>)
@@ -48,8 +48,15 @@ interface UserDao{
     @Query("SELECT uuid FROM users WHERE username = :username")
     fun selectUserId(username: String): Int?
 
-    @Query("UPDATE users SET fullname=:fullname, username=:username, phone=:phone, password=:password WHERE uuid = :id")
-    fun updateUser(fullname:String, username: String, phone:String, password: String, id:Int)
+    @Query("UPDATE users SET fullname=:fullname, username=:username, phone=:phone WHERE uuid = :id")
+    fun updateUser(fullname:String, username: String, phone:String, id:Int)
+
+    @Query("SELECT password FROM users WHERE uuid = :userId")
+    fun getUserPassword(userId: Int): String?
+
+    @Query("UPDATE users SET password=:password WHERE uuid=:id")
+    fun updatePassword(password: String, id: Int)
+
 
 }
 

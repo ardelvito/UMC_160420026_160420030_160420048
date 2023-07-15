@@ -1,5 +1,6 @@
 package com.example.healthcaretesting.view
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         //toolbar
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
+        toolbar.setTitleTextColor(Color.WHITE)
 
 
         //navigation drawer
@@ -226,11 +228,11 @@ class MainActivity : AppCompatActivity() {
         )
 
         // Prepopulate database
-        articleDao.insertAll(articles)
-        userDao.userRegisterAll(users)
-        doctorDao.insertAll(doctors)
-        bookingDao.insertAll(bookings)
-        facilityDao.insertAll(facilities)
+//        articleDao.insertAll(articles)
+//        userDao.userRegisterAll(users)
+//        doctorDao.insertAll(doctors)
+//        bookingDao.insertAll(bookings)
+//        facilityDao.insertAll(facilities)
 
 
     }

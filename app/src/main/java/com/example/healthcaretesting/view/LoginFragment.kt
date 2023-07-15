@@ -54,6 +54,7 @@ class LoginFragment : Fragment() {
             Toast.makeText(this.context, "Silahkan Login Dahulu", Toast.LENGTH_LONG).show()
         }
 
+        //Login
         val btnLogin = view.findViewById<Button>(R.id.btnLogin)
         btnLogin.setOnClickListener{
             val txtUsername = view.findViewById<EditText>(R.id.txtUsername)
@@ -81,6 +82,13 @@ class LoginFragment : Fragment() {
             }
 
 
+        }
+
+        //Register
+        val btnRegister = view.findViewById<Button>(R.id.btnRegister)
+        btnRegister.setOnClickListener {
+            val action = LoginFragmentDirections.actionRegist()
+            Navigation.findNavController(it).navigate(action)
         }
 
     }

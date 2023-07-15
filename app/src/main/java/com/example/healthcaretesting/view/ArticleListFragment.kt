@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -43,6 +44,11 @@ class ArticleListFragment : Fragment() {
 
         //Show bottom nav, drawer and toolbar
         (activity as MainActivity).setComponentsVisibility(true)
+
+        //Change text in toolbar
+        val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
+        actionBar?.title = "Article List"
+
 
         val sharedPreferences = requireContext().getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
         val userIdPreferences = requireContext().getSharedPreferences("UserId", Context.MODE_PRIVATE)

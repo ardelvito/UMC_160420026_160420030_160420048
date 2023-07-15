@@ -1,34 +1,27 @@
 package com.example.healthcaretesting.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.healthcaretesting.R
+import com.example.healthcaretesting.viewmodel.ProfileDetailViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyProfileDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyProfileDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var viewModel: ProfileDetailViewModel
+    private lateinit var userIdPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +31,62 @@ class MyProfileDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_my_profile_detail, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyProfileDetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyProfileDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //Change text in toolbar
+        val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
+        actionBar?.title = "Edit Profile"
+
+        userIdPreferences = requireContext().getSharedPreferences("UserId", Context.MODE_PRIVATE)
+        val userId = userIdPreferences.getInt("userId", 0)
+
+        viewModel = ViewModelProvider(this).get(ProfileDetailViewModel::class.java)
+        viewModel.fetch(userId)
+        observeViewModel()
+
+        val btnConfirmEditProfile = view.findViewById<Button>(R.id.btnConfirmEditProfile)
+        btnConfirmEditProfile.setOnClickListener{
+            val txtFullnameDetail = view.findViewById<EditText>(R.id.txtFullnameDetail)
+            val txtUsernameDetail = view.findViewById<EditText>(R.id.txtUsernameDetail)
+            val txtPhoneDetail = view.findViewById<EditText>(R.id.txtPhoneDetail)
+
+
+            viewModel.updateUser(
+                txtFullnameDetail.text.toString(),
+                txtUsernameDetail.text.toString(),
+                txtPhoneDetail.text.toString(),
+                userId
+            )
+
+            Toast.makeText(requireContext(), "Update successful", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(it).popBackStack()
+
+
+
+        }
+
+        val btnChangePassword = view.findViewById<Button>(R.id.btnChangePassword)
+        btnChangePassword.setOnClickListener{
+            val action = MyProfileDetailFragmentDirections.actionChangePassword()
+            Navigation.findNavController(it).navigate(action)
+        }
+
+
     }
+
+    private fun observeViewModel() {
+        viewModel.userLiveData.observe(viewLifecycleOwner){
+            val txtFullnameDetail = view?.findViewById<EditText>(R.id.txtFullnameDetail)
+            val txtUsernameDetail = view?.findViewById<EditText>(R.id.txtUsernameDetail)
+            val txtPhoneDetail = view?.findViewById<EditText>(R.id.txtPhoneDetail)
+
+            txtFullnameDetail?.setText(it.fullname)
+            txtUsernameDetail?.setText(it.username)
+            txtPhoneDetail?.setText(it.phone)
+
+
+        }
+    }
+
 }
