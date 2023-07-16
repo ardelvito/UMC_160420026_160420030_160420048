@@ -1,14 +1,20 @@
 package com.example.healthcaretesting.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthcaretesting.R
@@ -36,6 +42,30 @@ class ArticleListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Show bottom nav, drawer and toolbar
+        (activity as MainActivity).setComponentsVisibility(true)
+
+        //Change text in toolbar
+        val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
+        actionBar?.title = "Article List"
+
+
+        val sharedPreferences = requireContext().getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+        val userIdPreferences = requireContext().getSharedPreferences("UserId", Context.MODE_PRIVATE)
+        val userId = userIdPreferences.getInt("userId", 0)
+
+        if (isLoggedIn(sharedPreferences)) {
+            // User is already logged in, continue displaying the ArticleListFragment
+            Log.d("Status Login", "Anda Sudah Login dengan ID $userId")
+            Toast.makeText(this.context, "Anda Sudah Login! dengan ID $userId", Toast.LENGTH_LONG).show()
+
+        } else {
+            // User is not logged in, navigate to the LoginFragment
+            findNavController().navigate(R.id.loginFragment)
+            Log.d("Status Login", "Anda Belum Login")
+
+        }
+
         viewModel = ViewModelProvider(this).get(ArticleListViewModel::class.java)
 
         viewModel.refresh()
@@ -58,6 +88,11 @@ class ArticleListFragment : Fragment() {
                 txtEmpty?.visibility =View.GONE
             }
         })
+    }
+
+    private fun isLoggedIn(sharedPreferences: SharedPreferences): Boolean {
+        // Retrieve the login state from SharedPreferences
+        return sharedPreferences.getBoolean("isLoggedIn", false)
     }
 
 }

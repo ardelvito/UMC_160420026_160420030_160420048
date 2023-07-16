@@ -46,3 +46,59 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
 )
+
+@Entity(tableName = "doctors")
+data class Doctor(
+
+    @ColumnInfo(name="fullname")
+    var fullname:String,
+
+    @ColumnInfo(name="speciality")
+    var speciality:String,
+
+    @ColumnInfo(name="url_img")
+    var url_img:String,
+
+    @ColumnInfo(name="hospital")
+    var hospital:String,
+
+    @ColumnInfo(name = "working_days")
+    var working_days:String,
+
+    @ColumnInfo(name = "working_hours")
+    var working_hours: String,
+
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int =0
+){
+    val workingDaysArray: List<String>
+        get() = working_days.split(",")
+}
+
+@Entity(tableName = "bookings")
+data class Booking(
+
+    @ColumnInfo(name="user_id")
+    var user_id:Int,
+
+    @ColumnInfo(name="doctor_id")
+    var doctor_id:Int,
+
+    @ColumnInfo(name="disease_complaints")
+    var disease_complaints:String,
+
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int =0
+)
+
+@Entity(tableName = "facilities")
+data class  Facility(
+    @ColumnInfo(name= "name")
+    var name:String,
+
+    @ColumnInfo(name= "description")
+    var description:String,
+
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int =0
+)

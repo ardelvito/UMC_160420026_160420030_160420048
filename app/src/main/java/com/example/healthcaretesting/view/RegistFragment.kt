@@ -5,30 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.healthcaretesting.R
+import com.example.healthcaretesting.model.User
+import com.example.healthcaretesting.viewmodel.RegisterViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RegistFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RegistFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var viewModel: RegisterViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +28,44 @@ class RegistFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_regist, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegistFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegistFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+
+        val btnConfirmRegister = view.findViewById<Button>(R.id.btnConfirmRegister)
+        btnConfirmRegister.setOnClickListener{
+            val fullnameRegister = view.findViewById<EditText>(R.id.txtFullnameRegister)
+            val usernameRegister = view.findViewById<EditText>(R.id.txtUsernameRegister)
+            val passwordRegister = view.findViewById<EditText>(R.id.txtPasswordRegister)
+            val phoneRegister = view.findViewById<EditText>(R.id.txtPhoneRegister)
+            var radioGroup = view.findViewById<RadioGroup>(R.id.radioGroupGenderRegister)
+            val checkedRadioButtonId = radioGroup.checkedRadioButtonId
+            val checkedRadioButton = view.findViewById<RadioButton>(checkedRadioButtonId)
+            val selectedTag = checkedRadioButton.tag
+
+            val user = User(
+                fullnameRegister.text.toString(),
+                usernameRegister.text.toString(),
+                phoneRegister.text.toString(),
+                selectedTag.toString(),
+                passwordRegister.text.toString()
+
+            )
+
+            viewModel.userRegister(user).observe(viewLifecycleOwner, { isSuccess ->
+                if (isSuccess) {
+                    Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
+                    //Direct into login fragment
+                    val action = RegistFragmentDirections.actionBackToLogin()
+                    Navigation.findNavController(it).navigate(action)
+
+                } else {
+                    Toast.makeText(requireContext(), "Registration failed", Toast.LENGTH_SHORT).show()
                 }
-            }
+            })
+
+        }
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.healthcaretesting.view
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.healthcaretesting.R
 import com.example.healthcaretesting.model.Article
 import com.example.healthcaretesting.model.ArticleDao
+import com.example.healthcaretesting.model.Booking
+import com.example.healthcaretesting.model.BookingDao
+import com.example.healthcaretesting.model.Doctor
+import com.example.healthcaretesting.model.DoctorDao
+import com.example.healthcaretesting.model.Facility
+import com.example.healthcaretesting.model.FacilityDao
 import com.example.healthcaretesting.model.HealthCareDatabase
 import com.example.healthcaretesting.model.User
 import com.example.healthcaretesting.model.UserDao
@@ -30,6 +37,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var articleDao: ArticleDao
     private lateinit var userDao: UserDao
+    private lateinit var doctorDao: DoctorDao
+    private lateinit var bookingDao: BookingDao
+    private lateinit var facilityDao: FacilityDao
 
 
 
@@ -48,6 +58,7 @@ class MainActivity : AppCompatActivity() {
         //toolbar
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
+        toolbar.setTitleTextColor(Color.WHITE)
 
 
         //navigation drawer
@@ -77,6 +88,9 @@ class MainActivity : AppCompatActivity() {
         // Get the DAOs from the database
         articleDao = healthCareDatabase.articleDao()
         userDao = healthCareDatabase.userDao()
+        doctorDao = healthCareDatabase.doctorDao()
+        bookingDao = healthCareDatabase.bookingDao()
+        facilityDao = healthCareDatabase.facilityDao()
 
 
     }
@@ -148,11 +162,78 @@ class MainActivity : AppCompatActivity() {
             User("Jean Carlson", "jeancarlson99", "08218833201", "2", "jeancarlson123")
         )
 
-        // Prepopulate articles
-        articleDao.insertAll(articles)
+        val doctors = listOf(
+            Doctor(
+                "Dr. John Smith",
+                "Cardiology",
+                "https://st4.depositphotos.com/1325771/39154/i/600/depositphotos_391545206-stock-photo-happy-male-medical-doctor-portrait.jpg",
+                "General Hospital",
+                "Monday, Tuesday, Wednesday, Thursday, Friday",
+                "09.00 - 10.00, 11.00 - 12.00, 13.00 - 14.00, 15.00 - 16.00",
+            ),
+            Doctor(
+                "Dr. Emily Johnson",
+                "Pediatrics",
+                "https://t3.ftcdn.net/jpg/05/04/25/70/360_F_504257032_jBtwqNdvdMN9Xm6aDT0hcvtxDXPZErrn.jpg",
+                "Children's Hospital",
+                "Monday, Tuesday, Wednesday, Thursday",
+                "08.00 - 09.00, 11.00 - 12.00, 13.00 - 14.00, 15.00 - 16.00, 20.00 - 21.00",
+            ),
+            Doctor(
+                "Dr. Michael Davis",
+                "Orthopedics",
+                "https://t3.ftcdn.net/jpg/05/04/25/70/360_F_504257032_jBtwqNdvdMN9Xm6aDT0hcvtxDXPZErrn.jpg",
+                "Ortho Clinic",
+                "Sunday, Wednesday, Thursday",
+                "08.00 - 09.00, 11.00 - 12.00, 20.00 - 21.00",
+            ),
+            Doctor(
+                "Dr. Sarah Anderson",
+                "Dermatology",
+                "https://i.pinimg.com/736x/dc/04/aa/dc04aaae4d9a84ad7c4a3be7bc4e9766.jpg",
+                "Skin Care Center",
+                "Monday, Wednesday, Friday",
+                "07.00 - 08.00, 11.00 - 12.00, 13.00 - 14.00, 15.00 - 16.00, 17.00 - 18.00,",
+            ),
+            Doctor(
+                "Dr. Jennifer Lee",
+                "Pediatrics",
+                "https://t4.ftcdn.net/jpg/02/20/30/45/360_F_220304581_3BRbk3UhoYrcVlt72fdBcVRHBtHAKuvD.jpg",
+                "Children's Hospital",
+                "Monday, Tuesday, Wednesday, Thursday",
+                "08.00 - 09.00, 11.00 - 12.00, 13.00 - 14.00, 15.00 - 16.00, 20.00 - 21.00,",
+            ),
 
-        //Prepopulate users
-        userDao.userRegisterAll(users)
+            )
+
+        val bookings = listOf(
+            Booking(
+                1, 1, "headache for the past few days"
+            ),
+            Booking(
+                1, 2, "heart beats fast every time to sleep"
+            ),
+            Booking(
+                2, 1, "stomachache and nausea after eating spicy food"
+            )
+        )
+
+        val facilities = listOf(
+            Facility("Laboratory", "State-of-the-art laboratory for accurate diagnostics"),
+            Facility("Pharmacy", "Fully stocked pharmacy with a wide range of medications"),
+            Facility("Radiology", "Advanced radiology department for imaging and scans"),
+            Facility("Operating Rooms", "Modern operating rooms for surgical procedures"),
+            Facility("Emergency Services", "24/7 emergency services with experienced staff"),
+            Facility("Intensive Care Unit", "Specialized ICU for critical care patients")
+        )
+
+        // Prepopulate database
+//        articleDao.insertAll(articles)
+//        userDao.userRegisterAll(users)
+//        doctorDao.insertAll(doctors)
+//        bookingDao.insertAll(bookings)
+//        facilityDao.insertAll(facilities)
+
 
     }
 

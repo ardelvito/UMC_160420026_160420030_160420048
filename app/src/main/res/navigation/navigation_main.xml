@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/itemArticleList">
 
     <fragment
         android:id="@+id/itemDoctorList"
@@ -19,7 +19,11 @@
         android:id="@+id/itemProfile"
         android:name="com.example.healthcaretesting.view.MyProfileFragment"
         android:label="fragment_my_profile"
-        tools:layout="@layout/fragment_my_profile" />
+        tools:layout="@layout/fragment_my_profile" >
+        <action
+            android:id="@+id/actionProfileDetail"
+            app:destination="@id/myProfileDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemTransactionList"
         android:name="com.example.healthcaretesting.view.TransactionListFragment"
@@ -52,8 +56,8 @@
             android:id="@+id/actionRegist"
             app:destination="@id/registFragment" />
         <action
-            android:id="@+id/actionLogin"
-            app:destination="@id/itemDoctorList" />
+            android:id="@+id/actionHome"
+            app:destination="@id/itemArticleList" />
     </fragment>
     <fragment
         android:id="@+id/registFragment"
@@ -63,5 +67,32 @@
         <action
             android:id="@+id/actionBackToLogin"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProfileDetailFragment"
+        android:name="com.example.healthcaretesting.view.MyProfileDetailFragment"
+        android:label="fragment_my_profile_detail"
+        tools:layout="@layout/fragment_my_profile_detail" >
+        <action
+            android:id="@+id/actionChangePassword"
+            app:destination="@id/confirmationPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationPasswordFragment"
+        android:name="com.example.healthcaretesting.view.ConfirmationPasswordFragment"
+        android:label="fragment_confirmation_password"
+        tools:layout="@layout/fragment_confirmation_password" >
+        <action
+            android:id="@+id/actionNewPassword"
+            app:destination="@id/newPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPasswordFragment"
+        android:name="com.example.healthcaretesting.view.NewPasswordFragment"
+        android:label="fragment_new_password"
+        tools:layout="@layout/fragment_new_password" >
+        <action
+            android:id="@+id/actionBackToProfile"
+            app:destination="@id/itemProfile" />
     </fragment>
 </navigation>
