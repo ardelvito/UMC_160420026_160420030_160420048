@@ -23,7 +23,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    
     buildTypes {
         release {
             minifyEnabled false
@@ -36,6 +36,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '17'
+    }
+    buildFeatures {
+        dataBinding true
     }
 }
 
