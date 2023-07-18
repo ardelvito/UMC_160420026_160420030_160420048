@@ -10,34 +10,30 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.healthcaretesting.R
+import com.example.healthcaretesting.databinding.FragmentMyProfileBinding
 import com.example.healthcaretesting.viewmodel.ProfileViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MyProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyProfileFragment : Fragment() {
+class MyProfileFragment : Fragment(), MyProfileFragmentInterface {
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var userIdPreferences: SharedPreferences
     private lateinit var viewModel: ProfileViewModel
+    private lateinit var dataBinding: FragmentMyProfileBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_profile, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentMyProfileBinding>(inflater, R.layout.fragment_my_profile, container, false)
+        return dataBinding.root
+//        return inflater.inflate(R.layout.fragment_my_profile, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,25 +52,28 @@ class MyProfileFragment : Fragment() {
         observeViewModel()
 
 
-        val txtIdUser = view.findViewById<TextView>(R.id.txtIdUserLogin)
-        txtIdUser.text = "ID User " + userId.toString()
+//        val txtIdUser = view.findViewById<TextView>(R.id.txtIdUserLogin)
+//        txtIdUser.text = "ID User " + userId.toString()
+//
+//
+//        //Logout
+//        val btnLogout = view.findViewById<Button>(R.id.btnLogOut)
+//        btnLogout.setOnClickListener{
+//            // Call the manuallyLogout() function to log out the user
+//            userLogout()
+//            // Navigate to the login fragment
+//            findNavController().navigate(R.id.loginFragment)
+//        }
+//
+//        //Edit profile
+//        val btnEditProfile = view.findViewById<Button>(R.id.btnEditProfile)
+//        btnEditProfile.setOnClickListener{
+//            val action = MyProfileFragmentDirections.actionProfileDetail()
+//            Navigation.findNavController(it).navigate(action)
+//        }
 
-
-        //Logout
-        val btnLogout = view.findViewById<Button>(R.id.btnLogOut)
-        btnLogout.setOnClickListener{
-            // Call the manuallyLogout() function to log out the user
-            userLogout()
-            // Navigate to the login fragment
-            findNavController().navigate(R.id.loginFragment)
-        }
-
-        //Edit profile
-        val btnEditProfile = view.findViewById<Button>(R.id.btnEditProfile)
-        btnEditProfile.setOnClickListener{
-            val action = MyProfileFragmentDirections.actionProfileDetail()
-            Navigation.findNavController(it).navigate(action)
-        }
+        //Instantiate listener
+        dataBinding.myProfileInterface = this
     }
 
     private fun observeViewModel() {
@@ -82,23 +81,25 @@ class MyProfileFragment : Fragment() {
         val userId = userIdPreferences.getInt("userId", 0)
 
         viewModel.userLiveData.observe(viewLifecycleOwner){
-            val txtIdUser = view?.findViewById<TextView>(R.id.txtIdUserLogin)
-            val txtFullnameProfile = view?.findViewById<TextView>(R.id.txtFullnameProfile)
-            val txtUsernameProfile = view?.findViewById<TextView>(R.id.txtUsernameProfile)
-            val txtPhoneProfile = view?.findViewById<TextView>(R.id.txtPhoneProfile)
-            val txtGenderProfile = view?.findViewById<TextView>(R.id.txtGenderProfile)
+            dataBinding.user = it
 
-            txtIdUser?.text = "User ID Anda: " + userId.toString()
-            txtFullnameProfile?.text = it.fullname
-            txtUsernameProfile?.text = it.username
-            txtPhoneProfile?.text = it.phone
-
-            if(it.gender == "1"){
-                txtGenderProfile?.setText("Male")
-            }
-            else{
-                txtGenderProfile?.setText("Female")
-            }
+//            val txtIdUser = view?.findViewById<TextView>(R.id.txtIdUserLogin)
+//            val txtFullnameProfile = view?.findViewById<TextView>(R.id.txtFullnameProfile)
+//            val txtUsernameProfile = view?.findViewById<TextView>(R.id.txtUsernameProfile)
+//            val txtPhoneProfile = view?.findViewById<TextView>(R.id.txtPhoneProfile)
+//            val txtGenderProfile = view?.findViewById<TextView>(R.id.txtGenderProfile)
+//
+//            txtIdUser?.text = "User ID Anda: " + userId.toString()
+//            txtFullnameProfile?.text = it.fullname
+//            txtUsernameProfile?.text = it.username
+//            txtPhoneProfile?.text = it.phone
+//
+//            if(it.gender == "1"){
+//                txtGenderProfile?.setText("Male")
+//            }
+//            else{
+//                txtGenderProfile?.setText("Female")
+//            }
 
         }
     }
@@ -109,6 +110,18 @@ class MyProfileFragment : Fragment() {
 
         userIdPreferences.edit().putInt("userId", 0).apply()
 
+    }
+
+    override fun onLogoutClick(view: View) {
+        // Call the userLogout() function to log out the user
+        userLogout()
+        // Navigate to the login fragment
+        findNavController().navigate(R.id.loginFragment)
+    }
+
+    override fun onEditClick(view: View) {
+        val action = MyProfileFragmentDirections.actionProfileDetail()
+        Navigation.findNavController(view).navigate(action)
     }
 
 }

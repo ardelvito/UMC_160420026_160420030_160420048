@@ -10,6 +10,10 @@ android {
     namespace 'com.example.healthcaretesting'
     compileSdk 33
 
+    dataBinding{
+        enabled true
+    }
+
     defaultConfig {
         applicationId "com.example.healthcaretesting"
         minSdk 26
