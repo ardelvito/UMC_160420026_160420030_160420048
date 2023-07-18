@@ -1,10 +1,17 @@
 package com.example.healthcaretesting.util
 
 import android.content.Context
+import android.view.View
+import android.widget.ImageView
+import android.widget.ProgressBar
+import androidx.databinding.BindingAdapter
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.healthcaretesting.R
 import com.example.healthcaretesting.model.HealthCareDatabase
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 
 val DB_NAME = "healthcaredb"
 
@@ -87,5 +94,25 @@ val MIGRATION_4_5 = object : Migration(4, 5) {
                     "description TEXT)"
         )
     }
+}
+
+fun ImageView.loadImage(url: String?, progressBar: ProgressBar){
+    Picasso.get()
+        .load(url)
+        .resize(400, 400)
+        .centerCrop()
+        .error(R.drawable.baseline_error_24)
+        .into(this, object: Callback {
+            override fun onSuccess() {
+                progressBar.visibility = View.GONE
+            }
+            override fun onError(e: Exception?) {
+            }
+        })
+}
+
+@BindingAdapter("android:imageUrl","android:progressBar")
+fun loadPhotoUrl(view: ImageView, url: String, pb: ProgressBar){
+    view.loadImage(url,pb)
 }
 

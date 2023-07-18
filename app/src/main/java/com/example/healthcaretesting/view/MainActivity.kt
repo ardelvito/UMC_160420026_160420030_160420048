@@ -1,9 +1,9 @@
 package com.example.healthcaretesting.view
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -11,7 +11,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupWithNavController
 import com.example.healthcaretesting.R
 import com.example.healthcaretesting.model.Article
 import com.example.healthcaretesting.model.ArticleDao
@@ -228,13 +227,11 @@ class MainActivity : AppCompatActivity() {
         )
 
         // Prepopulate database
-//        articleDao.insertAll(articles)
-//        userDao.userRegisterAll(users)
-//        doctorDao.insertAll(doctors)
-//        bookingDao.insertAll(bookings)
-//        facilityDao.insertAll(facilities)
-
-
+        articleDao.insertAll(articles)
+        userDao.userRegisterAll(users)
+        doctorDao.insertAll(doctors)
+        bookingDao.insertAll(bookings)
+        facilityDao.insertAll(facilities)
     }
 
     override fun onSupportNavigateUp(): Boolean {
