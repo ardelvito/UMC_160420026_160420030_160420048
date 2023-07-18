@@ -71,6 +71,4 @@
         android:text="Register"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInputLayoutPassword" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

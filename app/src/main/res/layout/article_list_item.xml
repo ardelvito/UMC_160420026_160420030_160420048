@@ -7,6 +7,9 @@
         <variable
             name="article"
             type="com.example.healthcaretesting.model.Article" />
+        <variable
+            name="detailListener"
+            type="com.example.healthcaretesting.view.ArticleListFragmentInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-
+                    android:imageUrl="@{article.url_img}"
+                    android:progressBar="@{progressBarArticleList}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -49,8 +53,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
-                    android:imageUrl="@{article.url_img}"
-                    android:progressBar="@{progressBarArticleList}"
+                    android:onClick="@{detailListener :: onDetailClick}"
+                    android:tag = "@{article.uuid}"
                     android:text="@string/detail"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />

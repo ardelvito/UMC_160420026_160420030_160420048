@@ -44,3 +44,8 @@ interface BookingDoctorFragmentInterface{
     fun onBookingNow(view: View, obj: Doctor)
 
 }
+
+interface ArticleListFragmentInterface{
+    fun onDetailClick(view: View)
+
+}
