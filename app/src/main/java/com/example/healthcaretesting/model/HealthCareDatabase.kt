@@ -4,14 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.healthcaretesting.util.MIGRATION_1_2
 import com.example.healthcaretesting.util.MIGRATION_2_3
 import com.example.healthcaretesting.util.MIGRATION_3_4
 import com.example.healthcaretesting.util.MIGRATION_4_5
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @Database(entities = [Article::class, User::class, Doctor::class, Booking::class, Facility::class], version = 4)
 abstract class HealthCareDatabase: RoomDatabase(){
@@ -23,7 +19,6 @@ abstract class HealthCareDatabase: RoomDatabase(){
 
 
     companion object {
-
 
         @Volatile
         private var instance: HealthCareDatabase? = null

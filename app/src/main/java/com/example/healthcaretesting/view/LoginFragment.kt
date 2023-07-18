@@ -4,14 +4,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.healthcaretesting.R
@@ -120,7 +118,7 @@ class LoginFragment : Fragment(), LoginFragmentInterface {
         Log.d("Data Binding", "Button Login Binding")
 
         if (isLoggedIn()) {
-            // Login successful
+            // Login successfulisLoggedIn
             Toast.makeText(view.context, "Success Login", Toast.LENGTH_SHORT).show()
 
             //Direct into home (article list)
@@ -130,7 +128,6 @@ class LoginFragment : Fragment(), LoginFragmentInterface {
         } else {
             // Login failed
             Toast.makeText(view.context, "Failed Login", Toast.LENGTH_SHORT).show()
-
         }
     }
 

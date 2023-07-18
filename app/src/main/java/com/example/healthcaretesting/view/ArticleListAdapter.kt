@@ -26,50 +26,8 @@ class ArticleListAdapter(private val articles: ArrayList<Article>):
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-
-        holder.view.article
+        holder.view.article= articles[position]
         holder.view.detailListener = this
-//        var articleTitle = holder.view.findViewById<TextView>(R.id.txtArticleTitle)
-//        var articleAuthor = holder.view.findViewById<TextView>(R.id.txtArticleAuthor)
-//        var articlePublishDate = holder.view.findViewById<TextView>(R.id.txtArticlePublishDate)
-//
-//        //image view
-//        val url_img = articles[position].url_img
-//        var articleImageView = holder.view.findViewById<ImageView>(R.id.imgArticle)
-//        var articleProgressBar = holder.view.findViewById<ProgressBar>(R.id.progressBarArticleList)
-//
-//
-//        //button detail
-//        var btnDetail = holder.view.findViewById<Button>(R.id.btnArticleDetail)
-//        btnDetail.setOnClickListener{
-//            val action = ArticleListFragmentDirections.actionArticleDetail(articles[position].uuid)
-//            Navigation.findNavController(it).navigate(action)
-//        }
-//
-//        //picasso image
-//        Picasso.get()
-//            .load(url_img)
-//            .resize(200,200)
-//            .centerCrop()
-//            .into(articleImageView, object : Callback{
-//                override fun onSuccess() {
-//                    // Image loaded successfully
-//                    articleProgressBar?.visibility = View.GONE
-//                    Log.d("Success Load", "IMG Successfully Loaded")
-//
-//                }
-//
-//                override fun onError(e: Exception?) {
-//                    // Handle error
-//                    articleProgressBar?.visibility = View.GONE
-//                    Log.d("Error Load", e.toString())
-//                }
-//            })
-//
-//        //assign value into each element
-//        articleTitle.text = articles[position].title
-//        articleAuthor.text = articles[position].author
-//        articlePublishDate.text = articles[position].publish_date
 
     }
 

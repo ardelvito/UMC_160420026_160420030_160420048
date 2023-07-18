@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         //toolbar
-        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
         toolbar.setTitleTextColor(Color.WHITE)
 
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
         //Database Setup
         // Get an instance of the HealthCareDatabase
-        var healthCareDatabase = HealthCareDatabase(this)
+        val healthCareDatabase = HealthCareDatabase(this)
 
         // Call the prepopulateData function to insert dummy data
         CoroutineScope(Dispatchers.IO).launch {
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    public fun setComponentsVisibility(visible: Boolean) {
+    fun setComponentsVisibility(visible: Boolean) {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
@@ -226,7 +226,7 @@ class MainActivity : AppCompatActivity() {
             Facility("Intensive Care Unit", "Specialized ICU for critical care patients")
         )
 
-        // Prepopulate database
+//         Prepopulate database
         articleDao.insertAll(articles)
         userDao.userRegisterAll(users)
         doctorDao.insertAll(doctors)

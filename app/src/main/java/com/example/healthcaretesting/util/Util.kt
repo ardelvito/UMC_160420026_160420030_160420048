@@ -96,7 +96,11 @@ val MIGRATION_4_5 = object : Migration(4, 5) {
     }
 }
 
-fun ImageView.loadImage(url: String?, progressBar: ProgressBar){
+@BindingAdapter("imageUrl","progressBar")
+fun loadPhotoUrl(view: ImageView, url: String?, pb:ProgressBar?){
+    view.loadImage(url, pb)
+}
+fun ImageView.loadImage(url: String?, progressBar:ProgressBar?){
     Picasso.get()
         .load(url)
         .resize(400, 400)
@@ -104,15 +108,15 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar){
         .error(R.drawable.baseline_error_24)
         .into(this, object: Callback {
             override fun onSuccess() {
-                progressBar.visibility = View.GONE
+                if (progressBar != null) {
+                    progressBar.visibility = View.GONE
+                }
             }
             override fun onError(e: Exception?) {
+
             }
         })
 }
 
-@BindingAdapter("android:imageUrl","android:progressBar")
-fun loadPhotoUrl(view: ImageView, url: String, pb: ProgressBar){
-    view.loadImage(url,pb)
-}
+
 

@@ -1,16 +1,12 @@
 package com.example.healthcaretesting.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.healthcaretesting.R
@@ -83,9 +79,10 @@ class RegistFragment : Fragment(), RegisterFragmentInterface {
     }
 
     override fun onUserRegisterClick(view: View, obj: User) {
-        viewModel.userRegister(obj).observe(viewLifecycleOwner, { isSuccess ->
+        viewModel.userRegister(obj).observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
-                Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT)
+                    .show()
                 //Direct into login fragment
                 val action = RegistFragmentDirections.actionBackToLogin()
                 Navigation.findNavController(view).navigate(action)
@@ -93,7 +90,7 @@ class RegistFragment : Fragment(), RegisterFragmentInterface {
             } else {
                 Toast.makeText(requireContext(), "Registration failed", Toast.LENGTH_SHORT).show()
             }
-        })
+        }
     }
 
 }

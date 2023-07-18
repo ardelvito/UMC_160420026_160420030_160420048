@@ -25,7 +25,7 @@ class ArticleListFragment : Fragment() {
 
     //Article View Model
     private lateinit var viewModel: ArticleListViewModel
-    private val adapter = ArticleListAdapter(arrayListOf(), { item -> viewModel.clearTask(item)})
+    private val articleAdapter = ArticleListAdapter(arrayListOf())
 
 
     override fun onCreateView(
@@ -66,20 +66,18 @@ class ArticleListFragment : Fragment() {
 
         }
 
-        viewModel = ViewModelProvider(this).get(ArticleListViewModel::class.java)
-
+        viewModel = ViewModelProvider(this)[ArticleListViewModel::class.java]
         viewModel.refresh()
         val recViewArticle = view.findViewById<RecyclerView>(R.id.recViewArticle)
         recViewArticle.layoutManager = LinearLayoutManager(context)
-        recViewArticle.adapter = adapter
-
+        recViewArticle.adapter = articleAdapter
         observeViewModel()
     }
 
-    fun observeViewModel(){
+    private fun observeViewModel(){
 
         viewModel.articleLiveData.observe(viewLifecycleOwner, Observer{
-            adapter.updateArticleList(it as ArrayList<Article> /* = java.util.ArrayList<com.example.todoapp.model.Model.Todo> */)
+            articleAdapter.updateArticleList(it as ArrayList<Article> /* = java.util.ArrayList<com.example.todoapp.model.Model.Todo> */)
             val txtEmpty = view?.findViewById<TextView>(R.id.txtArticleListEmpty)
             if(it.isEmpty()){
                 txtEmpty?.visibility = View.VISIBLE

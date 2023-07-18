@@ -27,7 +27,7 @@ class ArticleDetailFragment : Fragment() {
         if(arguments != null){
             val id = ArticleDetailFragmentArgs.fromBundle(requireArguments()).articleId
             viewModel = ViewModelProvider(this)[ArticleDetailViewModel::class.java]
-
+            viewModel.detail(id)
         }
     }
 
