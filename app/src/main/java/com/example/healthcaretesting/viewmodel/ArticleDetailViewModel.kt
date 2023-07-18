@@ -19,7 +19,7 @@ class ArticleDetailViewModel(application: Application): AndroidViewModel(applica
     val loadingLiveData = MutableLiveData<Boolean>()
     private var job = Job()
 
-    private fun detail(id:Int){
+     fun detail(id:Int){
         loadingLiveData.value = true
         articleLoadErrorLiveData.value = false
         launch{

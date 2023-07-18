@@ -90,8 +90,6 @@ class MainActivity : AppCompatActivity() {
         doctorDao = healthCareDatabase.doctorDao()
         bookingDao = healthCareDatabase.bookingDao()
         facilityDao = healthCareDatabase.facilityDao()
-
-
     }
 
 
