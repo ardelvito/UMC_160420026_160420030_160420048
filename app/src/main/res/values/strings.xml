@@ -2,6 +2,9 @@
     <string name="app_name">HealthCareTesting</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="account_id">Your Account ID</string>
     <string name="your_article_is_still_empty">Your Article is Still Empty</string>
     <string name="detail">Detail</string>
 </resources>
