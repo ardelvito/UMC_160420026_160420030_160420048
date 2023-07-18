@@ -16,6 +16,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.healthcaretesting.R
 import com.example.healthcaretesting.viewmodel.ProfileViewModel
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+/**
+ * A simple [Fragment] subclass.
+ * Use the [MyProfileFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
 class MyProfileFragment : Fragment() {
 
     private lateinit var sharedPreferences: SharedPreferences
@@ -78,7 +88,7 @@ class MyProfileFragment : Fragment() {
             val txtPhoneProfile = view?.findViewById<TextView>(R.id.txtPhoneProfile)
             val txtGenderProfile = view?.findViewById<TextView>(R.id.txtGenderProfile)
 
-            txtIdUser?.text = "User ID Anda: $userId"
+            txtIdUser?.text = "User ID Anda: " + userId.toString()
             txtFullnameProfile?.text = it.fullname
             txtUsernameProfile?.text = it.username
             txtPhoneProfile?.text = it.phone

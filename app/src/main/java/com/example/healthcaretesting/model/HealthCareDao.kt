@@ -56,8 +56,6 @@ interface UserDao{
 
     @Query("UPDATE users SET password=:password WHERE uuid=:id")
     fun updatePassword(password: String, id: Int)
-
-
 }
 
 @Dao
@@ -71,6 +69,9 @@ interface DoctorDao{
     @Query("SELECT * FROM doctors WHERE uuid= :id")
     fun selectDoctor(id:Int): Doctor
 
+    @Query("SELECT * FROM doctors WHERE uuid= :id")
+    fun selectSchedule(id: Int): Doctor
+
     @Delete
     fun deleteDoctor(doctor: Doctor)
 
@@ -81,8 +82,8 @@ interface BookingDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(booking: List<Booking>)
 
-    @Insert
-    fun insert(booking: Booking)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(booking: Booking): Long
 
     @Query("SELECT * FROM bookings")
     fun  selectAllBooking(): List<Booking>
@@ -108,8 +109,6 @@ interface FacilityDao{
     @Query("SELECT * FROM facilities WHERE uuid= :id")
     fun  selectFacility(id: Int): Facility
 
-    @Delete
-    fun deleteBooking(facility: Facility)
-
 }
+
 

@@ -29,19 +29,19 @@ data class Article(
 data class User(
 
     @ColumnInfo(name="fullname")
-    var fullname:String,
+    var fullname:String? = null,
 
     @ColumnInfo(name="username")
-    var username:String,
+    var username:String? = null,
 
     @ColumnInfo(name="phone")
-    var phone:String,
+    var phone:String? = null,
 
     @ColumnInfo(name="gender")
-    var gender:String,
+    var gender:String? = null,
 
     @ColumnInfo(name = "password")
-    var password:String,
+    var password:String? = null,
 
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
@@ -71,8 +71,11 @@ data class Doctor(
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
 ){
-    val workingDaysArray: List<String>
-        get() = working_days.split(",")
+    val workingDaysList: List<String>
+        get() = working_days.split(", ")
+
+    val workingHoursList: List<String>
+        get() = working_hours.split(", ")
 }
 
 @Entity(tableName = "bookings")
