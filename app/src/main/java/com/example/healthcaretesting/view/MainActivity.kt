@@ -21,6 +21,7 @@ import com.example.healthcaretesting.model.DoctorDao
 import com.example.healthcaretesting.model.Facility
 import com.example.healthcaretesting.model.FacilityDao
 import com.example.healthcaretesting.model.HealthCareDatabase
+import com.example.healthcaretesting.model.MedicineDao
 import com.example.healthcaretesting.model.User
 import com.example.healthcaretesting.model.UserDao
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -79,10 +80,10 @@ class MainActivity : AppCompatActivity() {
         // Get an instance of the HealthCareDatabase
         val healthCareDatabase = HealthCareDatabase(this)
 
-        // Call the prepopulateData function to insert dummy data
-        CoroutineScope(Dispatchers.IO).launch {
-            prepopulateData()
-        }
+//        // Call the prepopulateData function to insert dummy data
+//        CoroutineScope(Dispatchers.IO).launch {
+//            prepopulateData()
+//        }
 
         // Get the DAOs from the database
         articleDao = healthCareDatabase.articleDao()
@@ -90,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         doctorDao = healthCareDatabase.doctorDao()
         bookingDao = healthCareDatabase.bookingDao()
         facilityDao = healthCareDatabase.facilityDao()
+
     }
 
 

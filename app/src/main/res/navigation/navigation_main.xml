@@ -12,13 +12,9 @@
         tools:layout="@layout/fragment_doctor_list" />
     <fragment
         android:id="@+id/itemMedicineList"
-        android:name="com.example.healthcaretesting.view.FasilitasListFragment"
+        android:name="com.example.healthcaretesting.view.MedicineListFragment"
         android:label="fragment_medicine_list"
-        tools:layout="@layout/fragment_medicine_list" >
-        <action
-            android:id="@+id/actionMedicineDetail"
-            app:destination="@id/medicineDetailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_medicine_list" />
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.example.healthcaretesting.view.MyProfileFragment"
@@ -32,7 +28,11 @@
         android:id="@+id/itemTransactionList"
         android:name="com.example.healthcaretesting.view.TransactionListFragment"
         android:label="fragment_transaction_list"
-        tools:layout="@layout/fragment_transaction_list" />
+        tools:layout="@layout/fragment_transaction_list" >
+        <action
+            android:id="@+id/actionTransactionListTransactionDetail"
+            app:destination="@id/transactionDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemArticleList"
         android:name="com.example.healthcaretesting.view.ArticleListFragment"
@@ -103,11 +103,12 @@
             app:destination="@id/itemProfile" />
     </fragment>
     <fragment
-        android:id="@+id/medicineDetailFragment"
-        android:name="com.example.healthcaretesting.view.FasilitasDetailFragment"
-        android:label="fragment_medicine_detail"
-        tools:layout="@layout/fragment_medicine_detail" >
-        <argument android:name="id"
+        android:id="@+id/transactionDetailFragment"
+        android:name="com.example.healthcaretesting.view.TransactionDetailFragment"
+        android:label="fragment_transaction_detail"
+        tools:layout="@layout/fragment_transaction_detail" >
+        <argument
+            android:name="id"
             app:argType="integer" />
     </fragment>
 </navigation>

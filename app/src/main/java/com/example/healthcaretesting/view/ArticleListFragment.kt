@@ -11,7 +11,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +25,6 @@ class ArticleListFragment : Fragment() {
     //Article View Model
     private lateinit var viewModel: ArticleListViewModel
     private val articleAdapter = ArticleListAdapter(arrayListOf())
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,17 +73,15 @@ class ArticleListFragment : Fragment() {
     }
 
     private fun observeViewModel(){
-
-        viewModel.articleLiveData.observe(viewLifecycleOwner, Observer{
+        viewModel.articleLiveData.observe(viewLifecycleOwner) {
             articleAdapter.updateArticleList(it as ArrayList<Article> /* = java.util.ArrayList<com.example.todoapp.model.Model.Todo> */)
             val txtEmpty = view?.findViewById<TextView>(R.id.txtArticleListEmpty)
-            if(it.isEmpty()){
+            if (it.isEmpty()) {
                 txtEmpty?.visibility = View.VISIBLE
+            } else {
+                txtEmpty?.visibility = View.GONE
             }
-            else{
-                txtEmpty?.visibility =View.GONE
-            }
-        })
+        }
     }
 
     private fun isLoggedIn(sharedPreferences: SharedPreferences): Boolean {

@@ -1,12 +1,11 @@
 package com.example.healthcaretesting.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.healthcaretesting.R
 import com.example.healthcaretesting.databinding.FragmentArticleDetailBinding
@@ -19,7 +18,7 @@ class ArticleDetailFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
        dataBinding = DataBindingUtil.inflate(
            inflater,
@@ -39,8 +38,8 @@ class ArticleDetailFragment : Fragment(){
     }
 
     fun observeDetailModel(){
-        viewModel.articleLD.observe(viewLifecycleOwner, Observer {
+        viewModel.articleLD.observe(viewLifecycleOwner) {
             dataBinding.article = it
-        })
+        }
     }
 }

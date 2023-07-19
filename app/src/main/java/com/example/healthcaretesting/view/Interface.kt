@@ -50,7 +50,6 @@ interface ArticleListFragmentInterface{
 
 }
 
-interface FasilitasListFragmentInterface{
-    fun onDetailClick(view: View)
-
+interface TransactionListFragmentInterface{
+    fun onDetailClick(v: View)
 }
