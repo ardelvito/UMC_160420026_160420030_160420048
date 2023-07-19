@@ -34,7 +34,7 @@ class LoginViewModel(application: Application): AndroidViewModel(application), C
                 sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
             }
             else{
-                Log.d("USER LOGIN ATTEMPT", "FAILED $password")
+                Log.d("USER LOGIN ATTEMPT", "FAILED")
                 sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
 
             }
@@ -50,7 +50,7 @@ class LoginViewModel(application: Application): AndroidViewModel(application), C
             val userId = userDao.selectUserId(username)
 
             if(userId != null){
-                Log.d("LOGIN ATTEMPT", "SUCCESS$userId")
+                Log.d("LOGIN ATTEMPT", "SUCCESS")
                 userIdPreferences.edit().putInt("userId", userId).apply()
             }
             else{
