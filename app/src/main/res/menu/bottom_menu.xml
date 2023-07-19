@@ -23,8 +23,8 @@
         />
 
     <item
-        android:title="Medicine"
-        android:id="@+id/itemMedicineList"
+        android:title="Facilities"
+        android:id="@+id/itemFacilityList"
         android:icon="@drawable/baseline_medication_24"
         app:showAsAction="always"
     />

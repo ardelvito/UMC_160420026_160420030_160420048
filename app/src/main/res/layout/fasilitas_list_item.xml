@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="medicine"
+            name="facility"
             type="com.example.healthcaretesting.model.Facility" />
         <variable
             name="detailListenerFacility"
@@ -14,7 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -30,47 +30,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
-
                 <TextView
                     android:id="@+id/txtNamaFasilitasLayanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="TextView"
+                    android:text="@{facility.name}"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txtDeskripsiFasilitasLayanan"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="@+id/txtNamaFasilitasLayanan"
-                    app:layout_constraintStart_toStartOf="@+id/txtNamaFasilitasLayanan"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{facility.description}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtNamaFasilitasLayanan" />
 
-                <Button
-                    android:id="@+id/btnDetailFasilitasLayanan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Detail"
-                    app:layout_constraintEnd_toEndOf="@+id/txtDeskripsiFasilitasLayanan"
-                    app:layout_constraintStart_toStartOf="@+id/txtDeskripsiFasilitasLayanan"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDeskripsiFasilitasLayanan" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

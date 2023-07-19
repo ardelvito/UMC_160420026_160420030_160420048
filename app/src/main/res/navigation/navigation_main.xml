@@ -11,11 +11,6 @@
         android:label="fragment_doctor_list"
         tools:layout="@layout/fragment_doctor_list" />
     <fragment
-        android:id="@+id/itemMedicineList"
-        android:name="com.example.healthcaretesting.view.MedicineListFragment"
-        android:label="fragment_medicine_list"
-        tools:layout="@layout/fragment_medicine_list" />
-    <fragment
         android:id="@+id/itemProfile"
         android:name="com.example.healthcaretesting.view.MyProfileFragment"
         android:label="fragment_my_profile"
@@ -101,12 +96,27 @@
         <action
             android:id="@+id/actionBackToProfile"
             app:destination="@id/itemProfile" />
+        <action
+            android:id="@+id/actionFacilityDetailFragment"
+            app:destination="@id/facilityDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/transactionDetailFragment"
         android:name="com.example.healthcaretesting.view.TransactionDetailFragment"
         android:label="fragment_transaction_detail"
         tools:layout="@layout/fragment_transaction_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFacilityList"
+        android:name="com.example.healthcaretesting.view.FacilityListFragment"
+        android:label="FacilityListFragment" />
+    <fragment
+        android:id="@+id/facilityDetailFragment"
+        android:name="com.example.healthcaretesting.view.FacilityDetailFragment"
+        android:label="FacilityDetailFragment" >
         <argument
             android:name="id"
             app:argType="integer" />
