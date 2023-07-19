@@ -6,10 +6,10 @@
     <data>
         <variable
             name="medicine"
-            type="com.example.healthcaretesting.model.Medicine" />
-        <variable
-            name="seeIngredientsListener"
-            type="com.example.healthcaretesting.view.MedicineListFragmentInterface" />
+            type="com.example.healthcaretesting.model.Facility" />
+<!--        <variable-->
+<!--            name="seeIngredientsListener"-->
+<!--            type="com.example.healthcaretesting.view.FasilitasListFragmentInterface" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +43,7 @@
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
-                    android:id="@+id/txtMedicineName"
+                    android:id="@+id/txtNamaFasilitasLayanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -53,24 +53,24 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txtWarning"
+                    android:id="@+id/txtDeskripsiFasilitasLayanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="@+id/txtMedicineName"
-                    app:layout_constraintStart_toStartOf="@+id/txtMedicineName"
-                    app:layout_constraintTop_toBottomOf="@+id/txtMedicineName" />
+                    app:layout_constraintEnd_toEndOf="@+id/txtNamaFasilitasLayanan"
+                    app:layout_constraintStart_toStartOf="@+id/txtNamaFasilitasLayanan"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNamaFasilitasLayanan" />
 
                 <Button
-                    android:id="@+id/btnIngredientsMedicine"
+                    android:id="@+id/btnDetailFasilitasLayanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="See Ingredients"
-                    app:layout_constraintEnd_toEndOf="@+id/txtWarning"
-                    app:layout_constraintStart_toStartOf="@+id/txtWarning"
-                    app:layout_constraintTop_toBottomOf="@+id/txtWarning" />
+                    android:text="Detail"
+                    app:layout_constraintEnd_toEndOf="@+id/txtDeskripsiFasilitasLayanan"
+                    app:layout_constraintStart_toStartOf="@+id/txtDeskripsiFasilitasLayanan"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDeskripsiFasilitasLayanan" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

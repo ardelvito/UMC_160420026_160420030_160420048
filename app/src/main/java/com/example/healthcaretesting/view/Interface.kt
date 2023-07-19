@@ -50,7 +50,7 @@ interface ArticleListFragmentInterface{
 
 }
 
-interface MedicineListFragmentInterface{
-    fun onSeeIngredientsClick(view: View)
+interface FasilitasListFragmentInterface{
+    fun onDetailClick(view: View)
 
 }

@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_doctor_list" />
     <fragment
         android:id="@+id/itemMedicineList"
-        android:name="com.example.healthcaretesting.view.MedicineListFragment"
+        android:name="com.example.healthcaretesting.view.FasilitasListFragment"
         android:label="fragment_medicine_list"
         tools:layout="@layout/fragment_medicine_list" >
         <action
@@ -104,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/medicineDetailFragment"
-        android:name="com.example.healthcaretesting.view.MedicineDetailFragment"
+        android:name="com.example.healthcaretesting.view.FasilitasDetailFragment"
         android:label="fragment_medicine_detail"
         tools:layout="@layout/fragment_medicine_detail" >
         <argument android:name="id"
