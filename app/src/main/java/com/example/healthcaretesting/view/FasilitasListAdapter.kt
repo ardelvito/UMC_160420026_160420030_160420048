@@ -11,21 +11,21 @@ import com.example.healthcaretesting.databinding.FasilitasListItemBinding
 import com.example.healthcaretesting.model.Facility
 import com.example.healthcaretesting.model.Medicine
 
-class FasilitasListAdapter(private val fasilitas:ArrayList<Facility>) : RecyclerView.Adapter<FasilitasListAdapter.FasilitasViewHolder>(), FasilitasListFragmentInterface {
+class FacilityListAdapter(private val fasilitas:ArrayList<Facility>) : RecyclerView.Adapter<FacilityListAdapter.FacilityViewHolder>(), FacilityListFragmentInterface {
 
-    class FasilitasViewHolder(val view:FasilitasListItemBinding):RecyclerView.ViewHolder(view.root)
+    class FacilityViewHolder(val view:FasilitasListItemBinding):RecyclerView.ViewHolder(view.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType:Int):FasilitasViewHolder{
+    override fun onCreateViewHolder(parent: ViewGroup, viewType:Int):FacilityViewHolder{
         val inflater = LayoutInflater.from(parent.context)
         val view = DataBindingUtil.inflate<FasilitasListItemBinding>(inflater, R.layout.fasilitas_list_item, parent, false)
-        return FasilitasViewHolder(view)
+        return FacilityViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return fasilitas.size
     }
 
-    override fun onBindViewHolder(holder: FasilitasViewHolder, position: Int){
+    override fun onBindViewHolder(holder: FacilityViewHolder, position: Int){
 //        holder.view.medicine = fasilitas[position]
         //holder.view.seeIngredientsListener  = this
     }

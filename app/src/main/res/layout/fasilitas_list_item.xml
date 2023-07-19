@@ -7,9 +7,9 @@
         <variable
             name="medicine"
             type="com.example.healthcaretesting.model.Facility" />
-<!--        <variable-->
-<!--            name="seeIngredientsListener"-->
-<!--            type="com.example.healthcaretesting.view.FasilitasListFragmentInterface" />-->
+        <variable
+            name="detailListenerFacility"
+            type="com.example.healthcaretesting.view.FacilityListFragmentInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

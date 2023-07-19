@@ -21,7 +21,6 @@ import com.example.healthcaretesting.model.DoctorDao
 import com.example.healthcaretesting.model.Facility
 import com.example.healthcaretesting.model.FacilityDao
 import com.example.healthcaretesting.model.HealthCareDatabase
-import com.example.healthcaretesting.model.MedicineDao
 import com.example.healthcaretesting.model.User
 import com.example.healthcaretesting.model.UserDao
 import com.google.android.material.bottomnavigation.BottomNavigationView

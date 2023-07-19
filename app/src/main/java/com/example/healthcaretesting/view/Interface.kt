@@ -53,3 +53,7 @@ interface ArticleListFragmentInterface{
 interface TransactionListFragmentInterface{
     fun onDetailClick(v: View)
 }
+
+interface FacilityListFragmentInterface{
+    fun onDetailClick(v: View)
+}

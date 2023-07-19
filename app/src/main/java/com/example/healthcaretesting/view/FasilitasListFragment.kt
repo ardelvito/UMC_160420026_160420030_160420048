@@ -11,7 +11,7 @@ import com.example.healthcaretesting.viewmodel.facilityListViewModel
 class FasilitasListFragment : Fragment() {
 
     private lateinit var viewmodel: facilityListViewModel
-    private val medicineAdapter = FasilitasListAdapter(arrayListOf())
+    private val medicineAdapter = FacilityListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
