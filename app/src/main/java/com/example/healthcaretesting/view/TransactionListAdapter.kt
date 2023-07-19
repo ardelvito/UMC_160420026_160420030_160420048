@@ -33,9 +33,9 @@ RecyclerView.Adapter<TransactionListAdapter.TransactionViewHolder>(), Transactio
         notifyDataSetChanged()
     }
     override fun onDetailClick(v: View) {
-        val id = v.tag.toString().toInt()
-        val action = TransactionListFragmentDirections.actionTransactionListTransactionDetail(id)
-        Navigation.findNavController(v).navigate(action)
+//        val id = v.tag.toString().toInt()
+//        val action = TransactionListFragmentDirections.actionTransactionListTransactionDetail(id)
+//        Navigation.findNavController(v).navigate(action)
     }
 
 }
