@@ -47,5 +47,7 @@ interface BookingDoctorFragmentInterface{
 
 interface ArticleListFragmentInterface{
     fun onDetailClick(view: View)
-
+}
+interface TransactionListFragmentInterface{
+    fun onDetailClick(v:View)
 }

@@ -18,6 +18,7 @@ abstract class HealthCareDatabase: RoomDatabase(){
     abstract fun facilityDao(): FacilityDao
 
 
+
     companion object {
 
         @Volatile

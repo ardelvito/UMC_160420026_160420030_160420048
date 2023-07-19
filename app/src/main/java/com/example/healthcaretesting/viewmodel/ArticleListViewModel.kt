@@ -17,7 +17,7 @@ class ArticleListViewModel(application: Application): AndroidViewModel(applicati
 
     val articleLiveData = MutableLiveData<List<Article>>()
     val articleLoadErrorLiveData = MutableLiveData<Boolean>()
-    val loadingLiveData = MutableLiveData<Boolean>()
+    private val loadingLiveData = MutableLiveData<Boolean>()
     private var job = Job()
 
     override val coroutineContext: CoroutineContext

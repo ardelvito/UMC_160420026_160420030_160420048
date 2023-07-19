@@ -79,10 +79,10 @@ class MainActivity : AppCompatActivity() {
         // Get an instance of the HealthCareDatabase
         val healthCareDatabase = HealthCareDatabase(this)
 
-        // Call the prepopulateData function to insert dummy data
-        CoroutineScope(Dispatchers.IO).launch {
-            prepopulateData()
-        }
+//        // Call the prepopulateData function to insert dummy data
+//        CoroutineScope(Dispatchers.IO).launch {
+//            prepopulateData()
+//        }
 
         // Get the DAOs from the database
         articleDao = healthCareDatabase.articleDao()

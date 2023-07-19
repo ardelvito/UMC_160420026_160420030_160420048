@@ -108,7 +108,7 @@ interface FacilityDao{
 
     @Query("SELECT * FROM facilities WHERE uuid= :id")
     fun  selectFacility(id: Int): Facility
-
 }
+
 
 

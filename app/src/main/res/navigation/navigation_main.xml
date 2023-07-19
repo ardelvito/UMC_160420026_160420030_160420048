@@ -28,7 +28,11 @@
         android:id="@+id/itemTransactionList"
         android:name="com.example.healthcaretesting.view.TransactionListFragment"
         android:label="fragment_transaction_list"
-        tools:layout="@layout/fragment_transaction_list" />
+        tools:layout="@layout/fragment_transaction_list" >
+        <action
+            android:id="@+id/actionTransactionListTransactionDetail"
+            app:destination="@id/transactionDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemArticleList"
         android:name="com.example.healthcaretesting.view.ArticleListFragment"
@@ -97,5 +101,14 @@
         <action
             android:id="@+id/actionBackToProfile"
             app:destination="@id/itemProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionDetailFragment"
+        android:name="com.example.healthcaretesting.view.TransactionDetailFragment"
+        android:label="fragment_transaction_detail"
+        tools:layout="@layout/fragment_transaction_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

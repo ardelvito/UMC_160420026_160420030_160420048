@@ -27,7 +27,7 @@ class LoginFragment : Fragment(), LoginFragmentInterface {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         dataBinding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater, R.layout.fragment_login, container, false)
         return dataBinding.root
@@ -98,11 +98,9 @@ class LoginFragment : Fragment(), LoginFragmentInterface {
 //            val action = LoginFragmentDirections.actionRegist()
 //            Navigation.findNavController(it).navigate(action)
 //        }
-
     }
 
     private fun checkSession(sharedPreferences: SharedPreferences?): Boolean {
-
         return sharedPreferences?.getBoolean("isLoggedIn", false)!!
     }
 
@@ -116,11 +114,9 @@ class LoginFragment : Fragment(), LoginFragmentInterface {
         obj.username?.let { viewModel.getUserId(it) }
 
         Log.d("Data Binding", "Button Login Binding")
-
         if (isLoggedIn()) {
-            // Login successfulisLoggedIn
+            // Login
             Toast.makeText(view.context, "Success Login", Toast.LENGTH_SHORT).show()
-
             //Direct into home (article list)
             val action = LoginFragmentDirections.actionHome()
             Navigation.findNavController(view).navigate(action)

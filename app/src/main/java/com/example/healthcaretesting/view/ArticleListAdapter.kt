@@ -28,7 +28,6 @@ class ArticleListAdapter(private val articles: ArrayList<Article>):
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.view.article= articles[position]
         holder.view.detailListener = this
-
     }
 
     override fun getItemCount(): Int {
