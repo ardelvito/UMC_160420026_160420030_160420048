@@ -1,6 +1,7 @@
 package com.example.healthcaretesting.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,6 +87,7 @@ class RegistFragment : Fragment(), RegisterFragmentInterface {
                 //Direct into login fragment
                 val action = RegistFragmentDirections.actionBackToLogin()
                 Navigation.findNavController(view).navigate(action)
+
 
             } else {
                 Toast.makeText(requireContext(), "Registration failed", Toast.LENGTH_SHORT).show()

@@ -110,5 +110,24 @@ interface FacilityDao{
     fun  selectFacility(id: Int): Facility
 }
 
+@Dao
+interface MedicineDao{
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(medicines: List<Medicine>)
+
+    @Insert
+    fun insert(medicine: Medicine)
+
+    @Query("SELECT * FROM medicines")
+    fun  selectAllMedicines(): List<Medicine>
+
+    @Query("SELECT * FROM medicines WHERE uuid= :id")
+    fun selectMedicine(id:Int): Medicine
+
+    @Delete
+    fun deleteMedicine(article: Medicine)
+}
+
 
 
