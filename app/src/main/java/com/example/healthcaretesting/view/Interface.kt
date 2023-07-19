@@ -49,3 +49,8 @@ interface ArticleListFragmentInterface{
     fun onDetailClick(view: View)
 
 }
+
+interface MedicineListFragmentInterface{
+    fun onSeeIngredientsClick(view: View)
+
+}

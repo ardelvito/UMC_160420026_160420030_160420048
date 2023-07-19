@@ -14,7 +14,11 @@
         android:id="@+id/itemMedicineList"
         android:name="com.example.healthcaretesting.view.MedicineListFragment"
         android:label="fragment_medicine_list"
-        tools:layout="@layout/fragment_medicine_list" />
+        tools:layout="@layout/fragment_medicine_list" >
+        <action
+            android:id="@+id/actionMedicineDetail"
+            app:destination="@id/medicineDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemProfile"
         android:name="com.example.healthcaretesting.view.MyProfileFragment"
@@ -97,5 +101,13 @@
         <action
             android:id="@+id/actionBackToProfile"
             app:destination="@id/itemProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicineDetailFragment"
+        android:name="com.example.healthcaretesting.view.MedicineDetailFragment"
+        android:label="fragment_medicine_detail"
+        tools:layout="@layout/fragment_medicine_detail" >
+        <argument android:name="id"
+            app:argType="integer" />
     </fragment>
 </navigation>

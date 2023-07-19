@@ -105,3 +105,22 @@ data class  Facility(
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
 )
+
+@Entity(tableName = "medicines")
+data class Medicine(
+    @ColumnInfo(name="url_img")
+    var url_img:String,
+    
+    @ColumnInfo(name="name")
+    var name:String,
+
+    @ColumnInfo(name="ingredients")
+    var ingredients:String,
+
+    @ColumnInfo(name="warning")
+    var warning:String = "",
+
+    @PrimaryKey(autoGenerate = true)
+    var uuid:Int =0
+
+)

@@ -30,11 +30,11 @@ class LoginViewModel(application: Application): AndroidViewModel(application), C
             val loggedInUser = userDao.userLogin(username, password)
 
             if(loggedInUser != null){
-                Log.d("LOGIN ATTEMPT", "SUCCESS")
+                Log.d("USER LOGIN ATTEMPT", "SUCCESS")
                 sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
             }
             else{
-                Log.d("LOGIN ATTEMPT", "FAILED")
+                Log.d("USER LOGIN ATTEMPT", "FAILED")
                 sharedPreferences.edit().putBoolean("isLoggedIn", false).apply()
 
             }
