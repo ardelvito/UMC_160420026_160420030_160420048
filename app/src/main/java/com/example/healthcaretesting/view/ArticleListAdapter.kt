@@ -44,6 +44,7 @@ class ArticleListAdapter(private val articles: ArrayList<Article>):
         val id = view.tag.toString().toInt()
         val action = ArticleListFragmentDirections.actionArticleDetail(id)
         Navigation.findNavController(view).navigate(action)
+
     }
 
 

@@ -23,7 +23,6 @@ fun buildDB(context: Context):HealthCareDatabase{
         .addMigrations(MIGRATION_2_3)
         .addMigrations(MIGRATION_3_4)
         .addMigrations(MIGRATION_4_5)
-        .addMigrations(MIGRATION_5_6)
         .build()
     return db
 }
@@ -97,18 +96,6 @@ val MIGRATION_4_5 = object : Migration(4, 5) {
     }
 }
 
-val MIGRATION_5_6 = object : Migration(5,6){
-    override fun migrate(database: SupportSQLiteDatabase) {
-        database.execSQL(
-            "CREATE TABLE IF NOT EXISTS medicines" +
-                    "(uuid INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "name TEXT, " +
-                    "ingredients TEXT, " +
-                    "warning TEXT)  "
-        )
-
-    }
-}
 
 @BindingAdapter("imageUrl","progressBar")
 fun loadPhotoUrl(view: ImageView, url: String?, pb:ProgressBar?){
