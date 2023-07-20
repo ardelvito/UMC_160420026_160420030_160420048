@@ -15,9 +15,9 @@
             app:destination="@id/doctorDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/itemMedicineList"
+        android:id="@+id/itemFacilityList"
         android:name="com.example.healthcaretesting.view.FacilityListFragment"
-        android:label="fragment_medicine_list"
+        android:label="fragment_facility_list"
         tools:layout="@layout/fragment_facility_list" />
     <fragment
         android:id="@+id/itemProfile"
