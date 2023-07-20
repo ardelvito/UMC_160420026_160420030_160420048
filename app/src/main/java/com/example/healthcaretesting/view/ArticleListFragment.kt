@@ -61,7 +61,6 @@ class ArticleListFragment : Fragment() {
             val action = ArticleListFragmentDirections.actionItemArticleListLoginFragment()
             Navigation.findNavController(view).navigate(action)
             Log.d("Status Login", "Anda Belum Login")
-
         }
 
         viewModel = ViewModelProvider(this)[ArticleListViewModel::class.java]

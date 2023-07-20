@@ -64,4 +64,7 @@ dependencies {
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.8'
 
+    //notification work
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
+
 }

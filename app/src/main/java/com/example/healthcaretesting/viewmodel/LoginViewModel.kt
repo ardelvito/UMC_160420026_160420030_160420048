@@ -55,14 +55,10 @@ class LoginViewModel(application: Application): AndroidViewModel(application), C
             }
             else{
                 Log.d("LOGIN ATTEMPT", "FAILED")
-
             }
         }
     }
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
-
-
-
 }

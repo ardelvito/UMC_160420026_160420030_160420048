@@ -138,7 +138,7 @@
                 android:id="@+id/radioMaleRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="@{user.gender == String.valueOf(1)?true:false}"
                 android:onClick="@{(view) -> registerInterface.onRadioGenderClick(view, 1, user)}"
                 android:tag="1"
                 android:text="Male" />
@@ -148,6 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{(view) -> registerInterface.onRadioGenderClick(view, 2, user)}"
+                android:checked="@{user.gender == String.valueOf(2)?true:false}"
                 android:tag="2"
                 android:text="Female" />
 
