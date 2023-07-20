@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.healthcaretesting.model.User" />
+
+        <variable
+            name="bookingConfirmationPasswordInterface"
+            type="com.example.healthcaretesting.view.BookingConfirmationFragmentInterface" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout12"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.BookingConfirmationFragment" >
+
+        <EditText
+            android:id="@+id/txtBookingPasswordConfirmation"
+            android:layout_width="368dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:ems="10"
+            android:hint="Enter Your Old Password"
+            android:inputType="textPassword"
+            android:text="@={user.password}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.119"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnBookingConfirmPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Confirm Password"
+            android:onClick="@{(view) -> bookingConfirmationPasswordInterface.onConfirmPasswordBooking(view, user)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtBookingPasswordConfirmation" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

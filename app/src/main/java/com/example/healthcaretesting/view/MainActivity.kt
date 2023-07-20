@@ -80,9 +80,9 @@ class MainActivity : AppCompatActivity() {
         val healthCareDatabase = HealthCareDatabase(this)
 
 //        // Call the prepopulateData function to insert dummy data
-//        CoroutineScope(Dispatchers.IO).launch {
-//            prepopulateData()
-//        }
+        CoroutineScope(Dispatchers.IO).launch {
+            prepopulateData()
+        }
 
         // Get the DAOs from the database
         articleDao = healthCareDatabase.articleDao()
@@ -226,11 +226,11 @@ class MainActivity : AppCompatActivity() {
         )
 
 //         Prepopulate database
-//        articleDao.insertAll(articles)
-//        userDao.userRegisterAll(users)
-//        doctorDao.insertAll(doctors)
-//        bookingDao.insertAll(bookings)
-//        facilityDao.insertAll(facilities)
+        articleDao.insertAll(articles)
+        userDao.userRegisterAll(users)
+        doctorDao.insertAll(doctors)
+        bookingDao.insertAll(bookings)
+        facilityDao.insertAll(facilities)
     }
 
     override fun onSupportNavigateUp(): Boolean {

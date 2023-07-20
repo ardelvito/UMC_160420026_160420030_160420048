@@ -1,6 +1,7 @@
 package com.example.healthcaretesting.view
 
 import android.view.View
+import com.example.healthcaretesting.model.Booking
 import com.example.healthcaretesting.model.Doctor
 import com.example.healthcaretesting.model.User
 
@@ -56,4 +57,13 @@ interface TransactionListFragmentInterface{
 
 interface FacilityListFragmentInterface{
     fun onDetailClick(v: View)
+}
+
+interface BookingConfirmationFragmentInterface{
+    fun onConfirmPasswordBooking(view: View, obj: User)
+
+}
+
+interface BookingReportFragmentInterface{
+    fun onSubmitBooking(view: View, obj: Booking)
 }

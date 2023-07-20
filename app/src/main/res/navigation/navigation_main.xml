@@ -9,7 +9,11 @@
         android:id="@+id/itemDoctorList"
         android:name="com.example.healthcaretesting.view.DoctorListFragment"
         android:label="fragment_doctor_list"
-        tools:layout="@layout/fragment_doctor_list" />
+        tools:layout="@layout/fragment_doctor_list" >
+        <action
+            android:id="@+id/actionDoctorDetail"
+            app:destination="@id/doctorDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemMedicineList"
         android:name="com.example.healthcaretesting.view.FacilityListFragment"
@@ -97,6 +101,63 @@
         <action
             android:id="@+id/actionBackToProfile"
             app:destination="@id/itemProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorDetailFragment"
+        android:name="com.example.healthcaretesting.view.DoctorDetailFragment"
+        android:label="fragment_doctor_detail"
+        tools:layout="@layout/fragment_doctor_detail" >
+        <argument
+            android:name="uuid"
+            app:argType="integer" />
+        <action
+            android:id="@+id/actionBookingDoctor"
+            app:destination="@id/bookingDoctorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingDoctorFragment"
+        android:name="com.example.healthcaretesting.view.BookingDoctorFragment"
+        android:label="BookingDoctorFragment" >
+        <argument
+            android:name="uuid"
+            app:argType="integer" />
+        <action
+            android:id="@+id/actionBookingConfirmation"
+            app:destination="@id/bookingConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingConfirmationFragment"
+        android:name="com.example.healthcaretesting.view.BookingConfirmationFragment"
+        android:label="BookingConfirmationFragment" >
+        <argument
+            android:name="uuid"
+            app:argType="integer" />
+        <argument
+            android:name="day"
+            app:argType="string" />
+        <argument
+            android:name="hour"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionBookingReport"
+            app:destination="@id/bookingReportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingReportFragment"
+        android:name="com.example.healthcaretesting.view.BookingReportFragment"
+        android:label="BookingReportFragment" >
+        <argument
+            android:name="uuid"
+            app:argType="integer" />
+        <argument
+            android:name="day"
+            app:argType="string" />
+        <argument
+            android:name="hour"
+            app:argType="string" />
+        <action
+            android:id="@+id/actionBackToDoctorList"
+            app:destination="@id/itemDoctorList" />
     </fragment>
 
 </navigation>

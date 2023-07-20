@@ -2,8 +2,11 @@ package com.example.healthcaretesting.util
 
 import android.content.Context
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.room.Room
 import androidx.room.migration.Migration
@@ -117,6 +120,44 @@ fun ImageView.loadImage(url: String?, progressBar:ProgressBar?){
 
             }
         })
+}
+
+@BindingAdapter("workingDays")
+fun setWorkingDays(textView: TextView, workingDays: String?) {
+    workingDays?.let {
+        val daysArray = it.split(", ")
+        val formattedText = daysArray.joinToString("\n")
+        textView.text = formattedText
+    }
+}
+
+@BindingAdapter("workingHours")
+fun setWorkingHours(textView: TextView, workingHours: String?) {
+    workingHours?.let {
+        val hoursArray = it.split(", ")
+        val formattedText = hoursArray.joinToString("\n")
+        textView.text = formattedText
+    }
+}
+
+@BindingAdapter("app:workingDays")
+fun setWorkingDays(spinner: Spinner, workingDays: String?) {
+    if (!workingDays.isNullOrEmpty()) {
+        val workingDaysArray = workingDays.split(", ").toTypedArray()
+        val adapter = ArrayAdapter(spinner.context, android.R.layout.simple_spinner_item, workingDaysArray)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+    }
+}
+
+@BindingAdapter("app:workingHours")
+fun setWorkingHours(spinner: Spinner, workingHours: String?) {
+    if (!workingHours.isNullOrEmpty()) {
+        val workingHoursArray = workingHours.split(", ").toTypedArray()
+        val adapter = ArrayAdapter(spinner.context, android.R.layout.simple_spinner_item, workingHoursArray)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+    }
 }
 
 
