@@ -14,6 +14,7 @@ import androidx.navigation.Navigation
 import com.example.healthcaretesting.R
 import com.example.healthcaretesting.databinding.FragmentBookingReportBinding
 import com.example.healthcaretesting.model.Booking
+import com.example.healthcaretesting.util.NotificationHelper
 import com.example.healthcaretesting.viewmodel.BookingReportViewModel
 
 
@@ -45,7 +46,7 @@ class BookingReportFragment : Fragment(), BookingReportFragmentInterface {
         val doctorId = BookingReportFragmentArgs.fromBundle(requireArguments()).uuid
 
         //Instantiate
-        dataBinding.booking = Booking(userId, doctorId, day + " " + hour)
+        dataBinding.booking = Booking(userId, doctorId, " ", day + ", " + hour)
         dataBinding.bookingReportInterface = this
 
     }
@@ -55,6 +56,8 @@ class BookingReportFragment : Fragment(), BookingReportFragmentInterface {
         viewModel.insertBooking(obj).observe(viewLifecycleOwner, {isSuccess ->
             if(isSuccess){
                 Toast.makeText(requireContext(), "Booking successful", Toast.LENGTH_SHORT).show()
+                NotificationHelper(view.context).createNotification("Success Booking: ","Dont Forget to Attend Consultation Schedule")
+
                 val action = BookingReportFragmentDirections.actionBackToDoctorList()
                 Navigation.findNavController(view).navigate(action)
             }

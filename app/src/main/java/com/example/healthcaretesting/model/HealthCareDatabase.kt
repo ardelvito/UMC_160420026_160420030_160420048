@@ -8,8 +8,9 @@ import com.example.healthcaretesting.util.MIGRATION_1_2
 import com.example.healthcaretesting.util.MIGRATION_2_3
 import com.example.healthcaretesting.util.MIGRATION_3_4
 import com.example.healthcaretesting.util.MIGRATION_4_5
+import com.example.healthcaretesting.util.MIGRATION_5_6
 
-@Database(entities = [Article::class, User::class, Doctor::class, Booking::class, Facility::class], version = 4)
+@Database(entities = [Article::class, User::class, Doctor::class, Booking::class, Facility::class], version = 5)
 abstract class HealthCareDatabase: RoomDatabase(){
     abstract fun articleDao(): ArticleDao
     abstract fun userDao(): UserDao
@@ -44,6 +45,7 @@ abstract class HealthCareDatabase: RoomDatabase(){
                 .addMigrations(MIGRATION_2_3)
                 .addMigrations(MIGRATION_3_4)
                 .addMigrations(MIGRATION_4_5)
+                .addMigrations(MIGRATION_5_6)
                 .build()
 
         }

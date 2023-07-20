@@ -90,6 +90,9 @@ data class Booking(
     @ColumnInfo(name="disease_complaints")
     var disease_complaints:String,
 
+    @ColumnInfo(name="schedule")
+    var schedule: String,
+
     @PrimaryKey(autoGenerate = true)
     var uuid:Int =0
 )
