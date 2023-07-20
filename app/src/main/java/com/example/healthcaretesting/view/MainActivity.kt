@@ -206,13 +206,13 @@ class MainActivity : AppCompatActivity() {
 
         val bookings = listOf(
             Booking(
-                1, 1, "headache for the past few days"
+                1, 1, "headache for the past few days", "Sunday 15.00-16.00"
             ),
             Booking(
-                1, 2, "heart beats fast every time to sleep"
+                1, 2, "heart beats fast every time to sleep", "Sunday 15.00-16.00"
             ),
             Booking(
-                2, 1, "stomachache and nausea after eating spicy food"
+                2, 1, "stomachache and nausea after eating spicy food", "Sunday 15.00-16.00"
             )
         )
 

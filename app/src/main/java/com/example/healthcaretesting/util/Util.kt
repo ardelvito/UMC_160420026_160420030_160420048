@@ -26,6 +26,7 @@ fun buildDB(context: Context):HealthCareDatabase{
         .addMigrations(MIGRATION_2_3)
         .addMigrations(MIGRATION_3_4)
         .addMigrations(MIGRATION_4_5)
+        .addMigrations(MIGRATION_5_6)
         .build()
     return db
 }
@@ -96,6 +97,12 @@ val MIGRATION_4_5 = object : Migration(4, 5) {
                     "name TEXT, " +
                     "description TEXT)"
         )
+    }
+}
+
+val MIGRATION_5_6 = object : Migration(5, 6) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("ALTER TABLE bookings ADD COLUMN schedule STRING")
     }
 }
 
