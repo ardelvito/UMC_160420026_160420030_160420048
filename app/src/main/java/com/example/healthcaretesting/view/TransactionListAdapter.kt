@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.healthcaretesting.R
 import com.example.healthcaretesting.databinding.TransactionListItemBinding
 import com.example.healthcaretesting.model.Booking
+import com.example.healthcaretesting.util.NotificationHelper
 
 class TransactionListAdapter (private val transaction: ArrayList<Booking>):
 RecyclerView.Adapter<TransactionListAdapter.TransactionViewHolder>(), TransactionListFragmentInterface{
@@ -32,10 +33,16 @@ RecyclerView.Adapter<TransactionListAdapter.TransactionViewHolder>(), Transactio
         transaction.addAll(newList)
         notifyDataSetChanged()
     }
-    override fun onDetailClick(v: View) {
-//        val id = v.tag.toString().toInt()
-//        val action = TransactionListFragmentDirections.actionTransactionListTransactionDetail(id)
-//        Navigation.findNavController(v).navigate(action)
+    override fun onDetailClick(v: View,tmpString:String) {
+        val split = tmpString.split(",")
+        if(split.size == 1){
+            NotificationHelper(v.context)
+                .createNotification("Disease complaint: "+split[0],"Time to see Doctor ")
+        }else if(split.size == 2){
+            NotificationHelper(v.context)
+                .createNotification("Disease complaint: "+split[0],"Time to see Doctor at"+split[1])
+        }
+
     }
 
 }

@@ -46,7 +46,7 @@
                     android:layout_marginTop="6dp"
                     android:layout_marginEnd="6dp"
                     android:layout_marginBottom="6dp"
-                    android:onClick="@{detailListener :: onDetailClick}"
+                    android:onClick="@{(view)-> detailListener.onDetailClick(view,booking.disease_complaints)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
