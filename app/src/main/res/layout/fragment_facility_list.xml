@@ -10,22 +10,22 @@
         android:id="@+id/frameLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.FasilitasListFragment">
+        tools:context=".view.FacilityListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recViewMedicine"
+            android:id="@+id/recViewFacility"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtMedicineListEmpty"
+            android:id="@+id/txtFacilityListEmpty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Your medicine is still empty"
-            app:layout_constraintBottom_toBottomOf="@+id/recViewMedicine"
+            app:layout_constraintBottom_toBottomOf="@+id/recViewFacility"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/recViewMedicine" />
+            app:layout_constraintTop_toTopOf="@+id/recViewFacility" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

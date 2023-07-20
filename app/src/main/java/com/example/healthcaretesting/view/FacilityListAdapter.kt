@@ -1,17 +1,18 @@
 package com.example.healthcaretesting.view
 
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthcaretesting.R
 import com.example.healthcaretesting.databinding.FasilitasListItemBinding
+import com.example.healthcaretesting.model.Article
 import com.example.healthcaretesting.model.Facility
-import com.example.healthcaretesting.model.Medicine
 
-class FacilityListAdapter(private val fasilitas:ArrayList<Facility>) : RecyclerView.Adapter<FacilityListAdapter.FacilityViewHolder>(), FacilityListFragmentInterface {
+class FacilityListAdapter(private val facilities:ArrayList<Facility>) : RecyclerView.Adapter<FacilityListAdapter.FacilityViewHolder>(), FacilityListFragmentInterface {
 
     class FacilityViewHolder(val view:FasilitasListItemBinding):RecyclerView.ViewHolder(view.root)
 
@@ -22,12 +23,12 @@ class FacilityListAdapter(private val fasilitas:ArrayList<Facility>) : RecyclerV
     }
 
     override fun getItemCount(): Int {
-        return fasilitas.size
+        return facilities.size
     }
 
     override fun onBindViewHolder(holder: FacilityViewHolder, position: Int){
-//        holder.view.medicine = fasilitas[position]
-        //holder.view.seeIngredientsListener  = this
+        holder.view.facility = facilities[position]
+        holder.view.detailListenerFacility = this
     }
 
 
@@ -35,4 +36,11 @@ class FacilityListAdapter(private val fasilitas:ArrayList<Facility>) : RecyclerV
     override fun onDetailClick(view: View) {
         TODO("Not yet implemented")
     }
+
+    fun updateFacilityList(newFacilities: ArrayList<Facility>){
+        facilities.clear()
+        facilities.addAll(newFacilities)
+        notifyDataSetChanged()
+    }
+
 }

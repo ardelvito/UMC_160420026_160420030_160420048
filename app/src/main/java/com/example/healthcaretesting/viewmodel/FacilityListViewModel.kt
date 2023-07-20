@@ -11,7 +11,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class facilityListViewModel(application: Application): AndroidViewModel(application),
+class FacilityListViewModel(application: Application): AndroidViewModel(application),
     CoroutineScope {
 
     val facilityLiveData = MutableLiveData<List<Facility>>()
